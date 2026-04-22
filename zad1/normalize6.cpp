@@ -65,13 +65,11 @@ size_t normalize_string(char* p, size_t n, size_t num_threads = 4){
     size_t* frag_sizes  = (size_t*)malloc(num_threads * sizeof(size_t));
     std::thread* threads = new std::thread[num_threads];
 
-    // Split at word boundaries: each fragment (i>0) starts at first non-space
-    // after the approximate split point — no fragment starts with a space
     frag_starts[0] = 0;
     for (size_t i = 1; i < num_threads; i++) {
         size_t pos = i * part_size;
-        while (pos < n && !isspace((unsigned char)p[pos])) pos++; // advance to space
-        while (pos < n &&  isspace((unsigned char)p[pos])) pos++; // skip spaces
+        while (pos < n && !isspace((unsigned char)p[pos])) pos++;
+        while (pos < n &&  isspace((unsigned char)p[pos])) pos++; 
         frag_starts[i] = pos;
     }
 
@@ -85,7 +83,6 @@ size_t normalize_string(char* p, size_t n, size_t num_threads = 4){
     for (size_t i = 0; i < num_threads; i++) threads[i].join();
     delete[] threads;
 
-    // Strip trailing space partial_normalize may have left on fragment 0
     size_t write_end = frag_sizes[0];
     if (write_end > 0 && p[write_end - 1] == ' ') write_end--;
 
@@ -93,12 +90,10 @@ size_t normalize_string(char* p, size_t n, size_t num_threads = 4){
         char* frag = p + frag_starts[i];
         size_t flen = frag_sizes[i];
         if (flen == 0) continue;
-        // frag[0] is always non-space by construction
-        // strip trailing space partial_normalize may have left
+
         if (flen > 0 && frag[flen - 1] == ' ') flen--;
         if (flen == 0) continue;
 
-        // duplicate word at boundary
         size_t last_word_start = write_end;
         while (last_word_start > 0 && p[last_word_start - 1] != ' ') last_word_start--;
         size_t last_word_len = write_end - last_word_start;
@@ -116,7 +111,6 @@ size_t normalize_string(char* p, size_t n, size_t num_threads = 4){
 
         if (flen == 0) continue;
 
-        // append space separator then fragment data
         if (write_end > 0) p[write_end++] = ' ';
         memmove(p + write_end, frag, flen);
         write_end += flen;

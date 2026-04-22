@@ -1,0 +1,28 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 81.48      0.66     0.66      400     1.65     1.65  normalize_string(char*, unsigned long)
+ 18.52      0.81     0.15                             _init
+
+			Call graph
+
+
+granularity: each sample hit covers 4 byte(s) for 1.23% of 0.81 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     81.5    0.00    0.66                 main [1]
+                0.66    0.00     400/400         normalize_string(char*, unsigned long) [2]
+-----------------------------------------------
+                0.66    0.00     400/400         main [1]
+[2]     81.5    0.66    0.00     400         normalize_string(char*, unsigned long) [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     18.5    0.15    0.00                 _init [3]
+-----------------------------------------------
+
+Index by function name
+
+   [2] normalize_string(char*, unsigned long) [3] _init

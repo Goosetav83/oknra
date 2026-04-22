@@ -1,0 +1,28 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 93.16      1.09     1.09      400     2.73     2.73  normalize_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+  6.84      1.17     0.08                             _init
+
+			Call graph
+
+
+granularity: each sample hit covers 4 byte(s) for 0.85% of 1.17 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     93.2    0.00    1.09                 main [1]
+                1.09    0.00     400/400         normalize_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [2]
+-----------------------------------------------
+                1.09    0.00     400/400         main [1]
+[2]     93.2    1.09    0.00     400         normalize_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      6.8    0.08    0.00                 _init [3]
+-----------------------------------------------
+
+Index by function name
+
+   [2] normalize_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [3] _init

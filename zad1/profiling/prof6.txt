@@ -1,0 +1,32 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 80.85      0.76     0.76     1600   475.00   475.00  partial_normalize(char*, unsigned long)
+ 19.15      0.94     0.18                             _init
+  0.00      0.94     0.00      400     0.00     0.00  normalize_string(char*, unsigned long, unsigned long)
+
+			Call graph
+
+
+granularity: each sample hit covers 4 byte(s) for 1.06% of 0.94 seconds
+
+index % time    self  children    called     name
+                0.76    0.00    1600/1600        std::thread::_State_impl<std::thread::_Invoker<std::tuple<normalize_string(char*, unsigned long, unsigned long)::{lambda()#1}> > >::_M_run() [2]
+[1]     80.9    0.76    0.00    1600         partial_normalize(char*, unsigned long) [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     80.9    0.00    0.76                 std::thread::_State_impl<std::thread::_Invoker<std::tuple<normalize_string(char*, unsigned long, unsigned long)::{lambda()#1}> > >::_M_run() [2]
+                0.76    0.00    1600/1600        partial_normalize(char*, unsigned long) [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     19.1    0.18    0.00                 _init [3]
+-----------------------------------------------
+                0.00    0.00     400/400         main [9]
+[11]     0.0    0.00    0.00     400         normalize_string(char*, unsigned long, unsigned long) [11]
+-----------------------------------------------
+
+Index by function name
+
+  [11] normalize_string(char*, unsigned long, unsigned long) [1] partial_normalize(char*, unsigned long) [3] _init

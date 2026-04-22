@@ -36,7 +36,6 @@ void normalize_string(std::string &input){
             [](char a, char b){ return a == ' ' && b == ' '; })
         - input.begin());
 
-    // Remove consecutive duplicate words in-place using std::find / std::copy
     auto word_begin = input.begin();
     auto write_end  = input.begin();
     std::string_view last_word;
@@ -53,7 +52,7 @@ void normalize_string(std::string &input){
         }
 
         word_begin = word_end;
-        if (word_begin != input.end()) ++word_begin; // skip space
+        if (word_begin != input.end()) ++word_begin;
     }
     input.erase(write_end, input.end());
 }

@@ -8,13 +8,6 @@
 
 
 std::string normalize_string(std::string input){
-    //Function:
-    //Removes chars outside 32-126 range
-    //Converts sequences of whitespaces into single space
-    //changes all chars to lowercase
-    //converts interpunction to comas
-    //converts repeatings of the same world into one occurance eg. hello hello hello world -> hello world
-    //isispace()
     std::string result = "";
     std::string current_word = "";
     std::string last_word = "";
@@ -23,7 +16,6 @@ std::string normalize_string(std::string input){
     while(i<n){
         ascii_val = (unsigned char)input[i];
         if(isspace(ascii_val)){
-            //printf("current word: %s last word: %s\n", current_word.c_str(), last_word.c_str());
             if(!result.empty() && result.back() != ' '){
                 if(!current_word.empty() && current_word == last_word){
                     result.resize(result.size() - current_word.size());
@@ -33,13 +25,13 @@ std::string normalize_string(std::string input){
                 last_word = current_word;
                 current_word = "";
             }
-            i++;
-            continue;
+            i++; continue;
         }
 
         if(ascii_val < 32 || ascii_val >126){
             i++; continue;
-        }else if(ispunct(ascii_val)){
+        }
+        if(ispunct(ascii_val)){
             ascii_val = ',';
         }
         current_word += tolower(ascii_val);

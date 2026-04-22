@@ -1,0 +1,7 @@
+size=4M
+normalize1 6.036381
+normalize2 6.001535
+normalize3 5.375847
+normalize4 5.195013
+normalize5 3.306161
+normalize6 1.024461

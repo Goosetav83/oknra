@@ -1,0 +1,7 @@
+size=16K
+normalize1 0.004792
+normalize2 0.004463
+normalize3 0.004187
+normalize4 0.009896
+normalize5 0.003157
+normalize6 0.047096

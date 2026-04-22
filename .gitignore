@@ -1,7 +1,7 @@
-spaces/*M
-nonprintable/*M
-regulartest/*M
-repeatingword/*M
+zad1/spaces/
+zad1/nonprintable/
+zad1/regulartests/
+zad1/repeatingword/
 # Prerequisites
 *.d
 

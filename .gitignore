@@ -4,7 +4,10 @@ zad1/regulartests/
 zad1/repeatingword/
 # Prerequisites
 *.d
-
+*.synctex.gz
+*.data
+*.data.old
+zad1/perf_results/
 # Object files
 *.o
 *.ko
